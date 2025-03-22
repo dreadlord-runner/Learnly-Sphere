@@ -4,6 +4,13 @@ function getRandomInt(max) {
   return Math.floor(Math.random() * max)
 }
 
+/*
+@desc Create a new category
+@body name: String
+@body description: String
+@returns Success Message
+*/
+
 exports.createCategory = async (req, res) => {
   try {
     const { name, description } = req.body;

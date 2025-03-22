@@ -1,6 +1,10 @@
 const express = require("express");
 const app = express();
 
+/*
+@desc Importing the routes
+*/
+
 const userRoutes = require("./routes/User");
 const profileRoutes = require("./routes/Profile");
 const paymentRoutes = require("./routes/Payments");

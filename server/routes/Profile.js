@@ -1,5 +1,10 @@
 const express = require("express")
 const router = express.Router()
+
+/*
+@desc Profile Routes
+*/
+
 const { auth, isInstructor } = require("../middlewares/auth")
 const {
   deleteAccount,

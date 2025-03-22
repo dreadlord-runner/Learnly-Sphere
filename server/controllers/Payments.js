@@ -10,6 +10,12 @@ const {
 const { paymentSuccessEmail } = require("../mail/templates/paymentSuccessEmail")
 const CourseProgress = require("../models/CourseProgress")
 
+/* 
+@desc Capture the payment and initiate the Razorpay order
+@body courses: Array
+@method POST
+*/
+
 // Capture the payment and initiate the Razorpay order
 exports.capturePayment = async (req, res) => {
   const { courses } = req.body

@@ -1,6 +1,14 @@
 const mongoose = require("mongoose");
 const mailSender = require("../utils/mailSender");
 const emailTemplate = require("../mail/templates/emailVerificationTemplate");
+
+/*
+@desc Define the OTP Schema
+@body email: String
+@body otp: String
+@returns OTP Model
+*/
+
 const OTPSchema = new mongoose.Schema({
 	email: {
 		type: String,

@@ -1,5 +1,14 @@
 const mongoose = require("mongoose");
 
+/*
+@desc Define the RatingAndReview schema
+@body user: ObjectId
+@body rating: Number
+@body review: String
+@body course: ObjectId
+@returns RatingAndReview Model
+*/
+
 // Define the RatingAndReview schema
 const ratingAndReviewSchema = new mongoose.Schema({
 	user: {

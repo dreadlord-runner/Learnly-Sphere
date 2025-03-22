@@ -3,6 +3,11 @@ const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
 
+/*
+@desc Send an email to the user with the reset password link
+@body email: String
+@method POST
+*/
 exports.resetPasswordToken = async (req, res) => {
 	try {
 		const email = req.body.email;

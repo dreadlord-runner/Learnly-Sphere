@@ -1,5 +1,24 @@
 const mongoose = require("mongoose");
 
+/*
+@desc Define the Courses schema
+@body courseName: String
+@body courseDescription: String
+@body instructor: ObjectId
+@body whatYouWillLearn: String
+@body courseContent: Array of Section IDs
+@body ratingAndReviews: Array of RatingAndReview IDs
+@body price: Number
+@body thumbnail: String
+@body tag: Array of Strings
+@body category: ObjectId
+@body studentsEnrolled: Array of User IDs
+@body instructions: Array of Strings
+@body status: String
+@body createdAt: Date
+@returns Courses Model
+*/
+
 // Define the Courses schema
 const coursesSchema = new mongoose.Schema({
 	courseName: { type: String },
@@ -54,8 +73,8 @@ const coursesSchema = new mongoose.Schema({
 		enum: ["Draft", "Published"],
 	},
 	createdAt: {
-		type:Date,
-		default:Date.now
+		type: Date,
+		default: Date.now
 	},
 });
 

@@ -8,6 +8,19 @@ const { passwordUpdated } = require("../mail/templates/passwordUpdate")
 const Profile = require("../models/Profile")
 require("dotenv").config()
 
+/*
+@desc Register a new user
+@body firstName: String
+@body lastName: String
+@body email: String
+@body password: String
+@body confirmPassword: String
+@body accountType: String
+@body contactNumber: String
+@body otp: String
+@method POST
+*/
+
 // Signup Controller for Registering USers
 
 exports.signup = async (req, res) => {

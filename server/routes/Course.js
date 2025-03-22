@@ -2,6 +2,14 @@
 const express = require("express")
 const router = express.Router()
 
+/*
+@desc Course Routes
+@route POST /createCourse
+@route POST /addSection
+@route POST /updateSection
+@route POST /deleteSection  
+*/
+
 // Import the Controllers
 
 // Course Controllers Import

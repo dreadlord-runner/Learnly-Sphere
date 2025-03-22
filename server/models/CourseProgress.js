@@ -1,5 +1,13 @@
 const mongoose = require("mongoose")
 
+/*
+@desc Define the Course Progress schema
+@body courseID: ObjectId
+@body userId: ObjectId
+@body completedVideos: Array of SubSection IDs
+@returns Course Progress Model
+*/
+
 const courseProgress = new mongoose.Schema({
   courseID: {
     type: mongoose.Schema.Types.ObjectId,

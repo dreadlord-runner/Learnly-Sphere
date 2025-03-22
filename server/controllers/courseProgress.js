@@ -4,6 +4,14 @@ const SubSection = require("../models/SubSection")
 const CourseProgress = require("../models/CourseProgress")
 const Course = require("../models/Course")
 
+
+/* 
+  @desc Create a new course progress document
+  @body courseId: String
+  @body subsectionId: String
+  @returns Success Message
+*/
+
 exports.updateCourseProgress = async (req, res) => {
   const { courseId, subsectionId } = req.body
   const userId = req.user.id

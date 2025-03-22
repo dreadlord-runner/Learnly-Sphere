@@ -2,6 +2,16 @@
 const express = require("express")
 const router = express.Router()
 
+/*
+@desc Authentication Routes
+@route POST /login
+@route POST /signup
+@route POST /sendotp
+@route POST /changepassword
+@route POST /reset-password-token
+@route POST /reset-password
+*/
+
 // Import the required controllers and middleware functions
 const {
   login,

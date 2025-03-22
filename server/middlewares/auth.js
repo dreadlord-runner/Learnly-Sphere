@@ -2,6 +2,15 @@
 const jwt = require("jsonwebtoken");
 const dotenv = require("dotenv");
 const User = require("../models/User");
+
+/*
+@desc Middleware to authenticate user requests
+@body None
+@parms req: Request Object
+@parms res: Response Object
+@parms next: Next Middleware Function
+*/
+
 // Configuring dotenv to load environment variables from .env file
 dotenv.config();
 

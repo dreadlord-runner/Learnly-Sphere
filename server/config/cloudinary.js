@@ -1,5 +1,10 @@
 const cloudinary = require("cloudinary").v2; //! Cloudinary is being required
 
+/*
+@desc Connect to the Cloudinary API
+@body None
+*/
+
 exports.cloudinaryConnect = () => {
 	try {
 		cloudinary.config({

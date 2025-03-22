@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 
+/*
+@desc Define the Profile schema
+*/
+
 // Define the Profile schema
 const profileSchema = new mongoose.Schema({
 	gender: {

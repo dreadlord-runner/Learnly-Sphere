@@ -1,6 +1,12 @@
 const Section = require("../models/Section");
 const Course = require("../models/Course");
 const SubSection = require("../models/SubSection");
+
+/*
+@desc Get all sections
+@body None
+@method GET
+*/
 // CREATE a new section
 exports.createSection = async (req, res) => {
 	try {
@@ -55,7 +61,7 @@ exports.createSection = async (req, res) => {
 // UPDATE a section
 exports.updateSection = async (req, res) => {
 	try {
-		const { sectionName, sectionId,courseId } = req.body;
+		const { sectionName, sectionId, courseId } = req.body;
 		const section = await Section.findByIdAndUpdate(
 			sectionId,
 			{ sectionName },
@@ -63,18 +69,18 @@ exports.updateSection = async (req, res) => {
 		);
 
 		const course = await Course.findById(courseId)
-		.populate({
-			path:"courseContent",
-			populate:{
-				path:"subSection",
-			},
-		})
-		.exec();
+			.populate({
+				path: "courseContent",
+				populate: {
+					path: "subSection",
+				},
+			})
+			.exec();
 
 		res.status(200).json({
 			success: true,
 			message: section,
-			data:course,
+			data: course,
 		});
 	} catch (error) {
 		console.error("Error updating section:", error);
@@ -89,7 +95,7 @@ exports.updateSection = async (req, res) => {
 exports.deleteSection = async (req, res) => {
 	try {
 
-		const { sectionId, courseId }  = req.body;
+		const { sectionId, courseId } = req.body;
 		await Course.findByIdAndUpdate(courseId, {
 			$pull: {
 				courseContent: sectionId,
@@ -97,31 +103,31 @@ exports.deleteSection = async (req, res) => {
 		})
 		const section = await Section.findById(sectionId);
 		console.log(sectionId, courseId);
-		if(!section) {
+		if (!section) {
 			return res.status(404).json({
-				success:false,
-				message:"Section not Found",
+				success: false,
+				message: "Section not Found",
 			})
 		}
 
 		//delete sub section
-		await SubSection.deleteMany({_id: {$in: section.subSection}});
+		await SubSection.deleteMany({ _id: { $in: section.subSection } });
 
 		await Section.findByIdAndDelete(sectionId);
 
 		//find the updated course and return 
 		const course = await Course.findById(courseId).populate({
-			path:"courseContent",
+			path: "courseContent",
 			populate: {
 				path: "subSection"
 			}
 		})
-		.exec();
+			.exec();
 
 		res.status(200).json({
-			success:true,
-			message:"Section deleted",
-			data:course
+			success: true,
+			message: "Section deleted",
+			data: course
 		});
 	} catch (error) {
 		console.error("Error deleting section:", error);

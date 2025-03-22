@@ -1,6 +1,24 @@
 // Import the Mongoose library
 const mongoose = require("mongoose");
 
+/*
+@desc Define the User schema
+@body firstName: String
+@body lastName: String
+@body email: String
+@body password: String
+@body accountType: String
+@body active: Boolean
+@body approved: Boolean
+@body additionalDetails: Profile ID
+@body courses: Array of Course IDs
+@body token: String
+@body resetPasswordExpires: Date
+@body image: String
+@body courseProgress: Array of CourseProgress IDs
+@returns User Model
+*/
+
 // Define the user schema using the Mongoose Schema constructor
 const userSchema = new mongoose.Schema(
 	{
