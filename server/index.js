@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin: "https://learnly-sphere-beta.vercel.app",
+		origin: "https://learnly-sphere-vh3c.vercel.app/",
 		credentials: true,
 	})
 )
