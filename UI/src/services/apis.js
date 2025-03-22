@@ -1,4 +1,4 @@
-const BASE_URL = "https://learnly-sphere-beta.vercel.app/api/v1"
+const BASE_URL = "https://learnly-sphere-three.vercel.app/api/v1"
 
 // AUTH ENDPOINTS
 export const endpoints = {
