@@ -1,5 +1,17 @@
 import IconBtn from "./IconBtn"
 
+/*
+  Description: Confirmation modal component
+  Props:
+    - modalData: Object containing the following keys:
+      - text1: String
+      - text2: String
+      - btn1Handler: Function
+      - btn1Text: String
+      - btn2Handler: Function
+      - btn2Text: String
+*/
+
 export default function ConfirmationModal({ modalData }) {
   return (
     <div className="fixed inset-0 z-[1000] !mt-0 grid place-items-center overflow-auto bg-white bg-opacity-10 backdrop-blur-sm">

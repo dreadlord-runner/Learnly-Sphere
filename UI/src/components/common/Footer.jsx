@@ -2,6 +2,19 @@ import React from "react";
 import { FooterLink2 } from "../../data/footer-links";
 import { Link } from "react-router-dom";
 
+/*
+  Footer component
+  Contains:
+    - Company
+    - Resources
+    - Plans
+    - Community
+    - BottomFooter
+    - Resources
+    - Plans
+    - Community
+*/
+
 // Images
 import Logo from "../../assets/Logo/Logo-Full-Light.png";
 

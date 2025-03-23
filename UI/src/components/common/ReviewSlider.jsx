@@ -3,6 +3,12 @@ import ReactStars from "react-rating-stars-component"
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react"
 
+/*
+  ReviewSlider component
+  Contains:
+    - ReviewSlider
+*/
+
 // Import Swiper styles
 import "swiper/css"
 import "swiper/css/free-mode"
@@ -22,7 +28,7 @@ function ReviewSlider() {
   const truncateWords = 15
 
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       const { data } = await apiConnector(
         "GET",
         ratingsEndpoints.REVIEWS_DETAILS_API
@@ -36,8 +42,8 @@ function ReviewSlider() {
   // console.log(reviews)
 
   return (
-    <div className="text-white">
-      <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent">
+    <div className="text-white w-full">
+      <div className="my-[50px] h-[184px] max-w-maxContentTab lg:max-w-maxContent w-full">
         <Swiper
           slidesPerView={4}
           spaceBetween={25}
@@ -53,7 +59,7 @@ function ReviewSlider() {
           {reviews.map((review, i) => {
             return (
               <SwiperSlide key={i}>
-                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25">
+                <div className="flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25 w-full">
                   <div className="flex items-center gap-4">
                     <img
                       src={
@@ -74,9 +80,9 @@ function ReviewSlider() {
                   <p className="font-medium text-richblack-25">
                     {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
-                          .split(" ")
-                          .slice(0, truncateWords)
-                          .join(" ")} ...`
+                        .split(" ")
+                        .slice(0, truncateWords)
+                        .join(" ")} ...`
                       : `${review?.review}`}
                   </p>
                   <div className="flex items-center gap-2 ">
