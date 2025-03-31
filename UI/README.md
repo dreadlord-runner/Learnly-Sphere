@@ -6,8 +6,6 @@
   - [Front-end](#front-end)
   - [Back-end](#back-end)
   - [Database](#database)
-  - [Architecture Diagram](#architecture-diagram)
-- [API Design](#api-design)
 
 
 ## Introduction
