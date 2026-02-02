@@ -82,4 +82,3 @@ The database for the platform is built using MongoDB, a NoSQL database that prov
 
 The Edtech platform's API is designed following the REST architectural style. The API is implemented using Node.js and Express.js. It uses JSON for data exchange and follows standard HTTP request methods such as GET, POST, PUT, and DELETE.
 
-
