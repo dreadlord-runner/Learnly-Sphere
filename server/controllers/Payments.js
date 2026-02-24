@@ -68,6 +68,7 @@ exports.capturePayment = async (req, res) => {
     res.json({
       success: true,
       data: paymentResponse,
+      key: process.env.RAZORPAY_KEY,
     })
   } catch (error) {
     console.log(error)
@@ -85,6 +86,14 @@ exports.verifyPayment = async (req, res) => {
   const courses = req.body?.courses
 
   const userId = req.user.id
+  const skipPayment = process.env.SKIP_RAZORPAY_PAYMENT === "true"
+
+  if (skipPayment && courses && userId) {
+    await enrollStudents(courses, userId, res)
+    return res
+      .status(200)
+      .json({ success: true, message: "Enrollment completed (payment bypass)." })
+  }
 
   if (
     !razorpay_order_id ||

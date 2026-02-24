@@ -27,11 +27,20 @@ function loadScript(src) {
 export async function buyCourse(token, courses, userDetails, navigate, dispatch) {
     const toastId = toast.loading("Loading...");
     try {
+        const skipRazorpay = process.env.REACT_APP_SKIP_RAZORPAY_PAYMENT === "true";
+
+        if (skipRazorpay) {
+            await verifyPayment({ courses }, token, navigate, dispatch);
+            toast.dismiss(toastId);
+            return;
+        }
+
         //load the script
         const res = await loadScript("https://checkout.razorpay.com/v1/checkout.js");
 
         if (!res) {
             toast.error("RazorPay SDK failed to load");
+            toast.dismiss(toastId);
             return;
         }
 
@@ -47,8 +56,13 @@ export async function buyCourse(token, courses, userDetails, navigate, dispatch)
         }
         console.log("PRINTING orderResponse", orderResponse.data.data);
         //options
+        const razorpayKey = orderResponse?.data?.key || process.env.REACT_APP_RAZORPAY_KEY;
+        if (!razorpayKey) {
+            throw new Error("Razorpay key is missing. Configure server RAZORPAY_KEY or UI REACT_APP_RAZORPAY_KEY");
+        }
+
         const options = {
-            key: process.env.RAZORPAY_KEY,
+            key: razorpayKey,
             currency: orderResponse.data.data.currency,
             amount: `${orderResponse.data.data.amount}`,
             order_id: orderResponse.data.data.id,
@@ -109,7 +123,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
         if (!response.data.success) {
             throw new Error(response.data.message);
         }
-        toast.success("payment Successful, ypou are addded to the course");
+        toast.success("Payment successful, you are added to the course.");
         navigate("/dashboard/enrolled-courses");
         dispatch(resetCart());
     }
