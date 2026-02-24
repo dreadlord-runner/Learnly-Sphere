@@ -1,4 +1,14 @@
-const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:4000/api/v1";
+const isProduction = process.env.NODE_ENV === "production";
+const BASE_URL =
+  process.env.REACT_APP_BASE_URL ||
+  (isProduction ? "" : "http://localhost:4000/api/v1");
+
+if (!BASE_URL) {
+  // Prevent silent production fallback to localhost.
+  throw new Error(
+    "Missing REACT_APP_BASE_URL for production build. Set it in Vercel env variables."
+  );
+}
 
 // AUTH ENDPOINTS
 export const endpoints = {
