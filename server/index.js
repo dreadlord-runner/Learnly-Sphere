@@ -25,15 +25,19 @@ database.connect();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+const normalizeOrigin = (value = "") => value.trim().replace(/\/+$/, "");
+
 const allowedOrigins = (process.env.CORS_ORIGIN || "http://localhost:3000")
 	.split(",")
-	.map((origin) => origin.trim())
+	.map((origin) => normalizeOrigin(origin))
 	.filter(Boolean);
 
 const corsOptions = {
 	origin: (origin, callback) => {
 		// Allow non-browser clients (no Origin header) and configured frontends.
-		if (!origin || allowedOrigins.includes(origin)) {
+		const normalizedOrigin = normalizeOrigin(origin || "");
+		const isAllowedVercelPreview = normalizedOrigin.endsWith(".vercel.app");
+		if (!origin || allowedOrigins.includes(normalizedOrigin) || isAllowedVercelPreview) {
 			return callback(null, true);
 		}
 		return callback(new Error("Not allowed by CORS"));
